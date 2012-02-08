@@ -1,0 +1,5 @@
+[apply]
+	whitespace = nowarn
+[alias]
+	co = checkout
+	gb = branch
