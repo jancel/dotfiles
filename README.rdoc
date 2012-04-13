@@ -1,1 +1,3 @@
 == Welcome to Jancel's Dotfiles
+
+Current installation is kinda manual, link the files you want.
