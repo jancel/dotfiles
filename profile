@@ -1,3 +1,7 @@
+
+alias chris="tmux attach -t coryellcp"
+alias jeff="tmux attach -t jancel"
+alias pair="tmux attach -t Pairing"
 alias _='sudo'
 alias df='df -h'
 alias g='grep -i'

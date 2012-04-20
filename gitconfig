@@ -3,3 +3,9 @@
 [alias]
 	co = checkout
 	gb = branch
+[user]
+	name = Jeff & Chris
+	email = jancel@gmail.com
+[github]
+	user = jancel
+	token = 79718b25d182455b246c194a1ae8def9
