@@ -1,0 +1,11 @@
+local/
+*.local
+*.backup
+*_backup_*
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/

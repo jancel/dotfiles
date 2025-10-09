@@ -1,0 +1,36 @@
+# Navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ~='cd ~'
+
+# Listing
+alias ls='ls --color=auto'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Git
+alias g='git'
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit -m'
+alias gp='git push'
+alias gl='git pull'
+alias gd='git diff'
+alias gco='git checkout'
+alias gb='git branch'
+
+# Safety
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+# Dotfiles
+alias dot='cd ~/.dotfiles'
+alias dots='cd ~/.dotfiles && git pull && make fast-update'
+
+# Quick edits
+alias zshrc='${EDITOR:-vim} ~/.zshrc'
+alias bashrc='${EDITOR:-vim} ~/.bashrc'
+alias vimrc='${EDITOR:-vim} ~/.vimrc'
