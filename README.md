@@ -1,8 +1,10 @@
 # Dotfiles
 
-Personal dotfiles for Mac and Linux.
+Personal dotfiles for macOS, Linux, and Windows (via WSL).
 
 ## Quick Installation
+
+### macOS / Linux / WSL
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/jancel/dotfiles/main/install.sh | bash
@@ -10,19 +12,61 @@ curl -fsSL https://raw.githubusercontent.com/jancel/dotfiles/main/install.sh | b
 
 ## Manual Installation
 
+### macOS / Linux / WSL
+
 ```bash
 git clone https://github.com/jancel/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 make install
 ```
 
+### Windows (WSL Required)
+
+**Prerequisites**: WSL 2 must be installed.
+
+#### Quick Install from PowerShell
+
+Run this in PowerShell (will install WSL if needed):
+
+```powershell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/jancel/dotfiles/main/os/windows/Install-WSLDotfiles.ps1" -OutFile "$env:TEMP\Install-WSLDotfiles.ps1"; & "$env:TEMP\Install-WSLDotfiles.ps1"
+```
+
+#### Manual WSL Installation
+
+If WSL is not installed:
+
+1. Open PowerShell as Administrator and run:
+   ```powershell
+   wsl --install
+   ```
+
+2. Restart your computer
+
+3. Open your WSL distribution (Ubuntu, Debian, etc.) and run:
+   ```bash
+   git clone https://github.com/jancel/dotfiles.git ~/.dotfiles
+   cd ~/.dotfiles
+   make install
+   ```
+
+The installation will automatically detect WSL and configure:
+- WSL-specific packages (wslu for Windows interop)
+- Windows integration aliases (explorer, powershell, cmd)
+- Git credential manager integration with Windows
+- VS Code WSL integration
+
+See [os/windows/README.md](os/windows/README.md) for detailed Windows/WSL documentation.
+
 ## Features
 
-- Cross-platform support (macOS and Linux)
-- Automatic Antigen installation and Oh My Zsh setup
-- Zsh plugins: git, docker, kubectl, syntax-highlighting, autosuggestions, and more
-- Automatic backups before installation
-- Easy symlink management
+- **Cross-platform support**: macOS, Linux, and Windows (via WSL)
+- **Automatic OS detection**: Installs appropriate packages and configurations for your system
+- **Antigen & Oh My Zsh**: Automatic installation and setup
+- **Zsh plugins**: git, docker, kubectl, syntax-highlighting, autosuggestions, and more
+- **Automatic backups**: Before installation
+- **Easy symlink management**: Consistent configuration across all platforms
+- **WSL integration**: Windows-specific aliases and VS Code integration
 
 ## Commands
 
@@ -53,7 +97,72 @@ The setup automatically installs Antigen and configures Oh My Zsh with these plu
 - Git configuration (`.gitconfig`)
 - Vim configuration (`.vimrc`)
 - Tmux configuration (`.tmux.conf`)
-- VSCode settings (if VSCode is installed)
+- VSCode settings (automatically detects macOS, Linux, or WSL paths)
+
+## Private Configuration
+
+Dotfiles includes a secure local-only configuration system for sensitive data that should never be committed or logged.
+
+### Security Features
+
+- **Never committed**: All files in `local/` are gitignored
+- **No logging**: Content is never logged unless `DOTFILES_LOG_LEVEL=debug`
+- **Local-only**: Changes stay on your machine only
+- **Automatic sourcing**: Loaded automatically by shell configuration
+
+### Quick Start
+
+Create private configuration files in `~/.dotfiles/local/`:
+
+```bash
+# Add private environment variables
+echo 'export GITHUB_TOKEN="your_token"' > ~/.dotfiles/local/local.env
+
+# Add private aliases
+echo 'alias myserver="ssh user@private.com"' > ~/.dotfiles/local/local.aliases
+
+# Add private git config (name, email, signing key)
+cp ~/.dotfiles/local/templates/local.gitconfig.example ~/.dotfiles/local/local.gitconfig
+```
+
+See [local/README.md](local/README.md) for detailed documentation and examples.
+
+### Log Levels
+
+Control logging verbosity with `DOTFILES_LOG_LEVEL`:
+
+```bash
+# No logging
+export DOTFILES_LOG_LEVEL=none
+
+# Errors only (default for private configs)
+export DOTFILES_LOG_LEVEL=error
+
+# Show info messages
+export DOTFILES_LOG_LEVEL=info
+
+# Debug mode (may expose sensitive data!)
+export DOTFILES_LOG_LEVEL=debug
+```
+
+## Platform-Specific Features
+
+### macOS
+- Homebrew installation and package management
+- macOS system defaults configuration
+- Applications: git, wget, curl, tree, htop, tmux, vim, fzf, ripgrep, bat, jq
+
+### Linux
+- Package manager detection (apt, dnf, pacman)
+- Essential development tools
+- Applications: git, curl, wget, vim, tmux, htop, tree
+
+### Windows (WSL)
+- WSL-specific package installation (including wslu for Windows interop)
+- Windows integration aliases: `explorer`, `powershell`, `cmd`, `winget`
+- Git credential manager integration with Windows
+- VS Code WSL integration with proper path detection
+- Automatic Windows username and home directory detection
 
 ## Dev Containers
 

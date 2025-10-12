@@ -21,3 +21,7 @@
 	br = branch
 	ci = commit
 	lg = log --graph --oneline --decorate
+
+# Include local-only git configuration (private, never committed)
+[include]
+	path = ~/.dotfiles/local/local.gitconfig

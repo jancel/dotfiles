@@ -1,12 +1,41 @@
+# Local-only configuration (NEVER commit these!)
 local/
+!local/.gitkeep
+!local/README.md
+!local/templates/
 *.local
 *.backup
 *_backup_*
+
+# Local private files in home directory
+.zshrc.local
+.bashrc.local
+
+# OS-specific files
 .DS_Store
 Thumbs.db
 *.swp
 *.swo
 *~
+
+# IDE directories
 .vscode/
 .idea/
+
+# Dev container (should be created per-project)
 .devcontainer/
+
+# Sensitive patterns (double-check)
+*secret*
+*password*
+*credential*
+*token*
+*.key
+*.pem
+*.cert
+*.p12
+*.pfx
+
+# But allow template/example files
+!*.example
+!templates/

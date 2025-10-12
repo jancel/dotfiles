@@ -46,7 +46,26 @@ setopt SHARE_HISTORY
 # Aliases
 [ -f ~/.aliases ] && source ~/.aliases
 
-# Local overrides
+# Load secure logging system
+if [ -f "${HOME}/.dotfiles/scripts/secure-logger.sh" ]; then
+    source "${HOME}/.dotfiles/scripts/secure-logger.sh"
+fi
+
+# Load local-only private configurations (never logged or committed)
+# These files are in .gitignore and only exist on your local machine
+if [ -f "${HOME}/.dotfiles/scripts/secure-logger.sh" ]; then
+    # Use secure sourcing with proper logging controls
+    dotfiles_secure_source "${HOME}/.dotfiles/local/local.env" "local environment variables"
+    dotfiles_secure_source "${HOME}/.dotfiles/local/local.aliases" "local aliases"
+    dotfiles_secure_source "${HOME}/.dotfiles/local/local.zshrc" "local zsh configuration"
+else
+    # Fallback to basic sourcing if secure logger not available
+    [ -f "${HOME}/.dotfiles/local/local.env" ] && source "${HOME}/.dotfiles/local/local.env"
+    [ -f "${HOME}/.dotfiles/local/local.aliases" ] && source "${HOME}/.dotfiles/local/local.aliases"
+    [ -f "${HOME}/.dotfiles/local/local.zshrc" ] && source "${HOME}/.dotfiles/local/local.zshrc"
+fi
+
+# Local overrides (legacy support)
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
