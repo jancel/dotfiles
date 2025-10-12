@@ -27,6 +27,10 @@ if [[ -d "${HOME}/Library/Application Support/Code/User" ]]; then
         cp "${HOME}/Library/Application Support/Code/User/tasks.json" "$BACKUP_DIR/"
 fi
 
+# Setup Antigen
+echo "Setting up Antigen..."
+"${DOTFILES_DIR}/scripts/setup-antigen.sh"
+
 # Create symlinks
 ln -sf "${DOTFILES_DIR}/config/shell/.bashrc" "${HOME}/.bashrc"
 ln -sf "${DOTFILES_DIR}/config/shell/.zshrc" "${HOME}/.zshrc"

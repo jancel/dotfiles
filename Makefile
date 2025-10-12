@@ -5,7 +5,7 @@ BACKUP_DIR := $(HOME)/.dotfiles_backup_$(shell date +%Y%m%d_%H%M%S)
 
 all: install
 
-install: backup symlinks
+install: backup setup-antigen symlinks
 	@echo "✓ Installation complete"
 
 fast-update: symlinks
@@ -23,6 +23,10 @@ backup:
 			cp "$(HOME)/Library/Application Support/Code/User/tasks.json" $(BACKUP_DIR)/; \
 	fi || true
 	@echo "✓ Backup complete"
+
+setup-antigen:
+	@echo "Setting up Antigen..."
+	@$(DOTFILES_DIR)/scripts/setup-antigen.sh
 
 symlinks:
 	@ln -sf $(DOTFILES_DIR)/config/shell/.bashrc $(HOME)/.bashrc
@@ -49,8 +53,9 @@ update:
 
 help:
 	@echo "Commands:"
-	@echo "  make install     - Full installation"
-	@echo "  make fast-update - Quick update"
-	@echo "  make update      - Pull and update"
-	@echo "  make backup      - Backup existing"
-	@echo "  make clean       - Remove broken links"
+	@echo "  make install       - Full installation"
+	@echo "  make fast-update   - Quick update"
+	@echo "  make update        - Pull and update"
+	@echo "  make backup        - Backup existing"
+	@echo "  make setup-antigen - Install/update Antigen"
+	@echo "  make clean         - Remove broken links"

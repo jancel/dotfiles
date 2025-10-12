@@ -14,3 +14,7 @@ PS1='\[\033[01;34m\]\w\[\033[00m\] $ '
 
 # Local overrides
 [ -f ~/.bashrc.local ] && source ~/.bashrc.local
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/jancel/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
