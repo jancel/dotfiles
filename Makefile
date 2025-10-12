@@ -1,4 +1,4 @@
-.PHONY: all install fast-update backup symlinks clean update help
+.PHONY: all install fast-update backup symlinks clean update help init-devcontainer
 
 DOTFILES_DIR := $(HOME)/.dotfiles
 BACKUP_DIR := $(HOME)/.dotfiles_backup_$(shell date +%Y%m%d_%H%M%S)
@@ -51,11 +51,15 @@ update:
 	@cd $(DOTFILES_DIR) && git pull origin main
 	@$(MAKE) fast-update
 
+init-devcontainer:
+	@$(DOTFILES_DIR)/scripts/init-devcontainer.sh
+
 help:
 	@echo "Commands:"
-	@echo "  make install       - Full installation"
-	@echo "  make fast-update   - Quick update"
-	@echo "  make update        - Pull and update"
-	@echo "  make backup        - Backup existing"
-	@echo "  make setup-antigen - Install/update Antigen"
-	@echo "  make clean         - Remove broken links"
+	@echo "  make install          - Full installation"
+	@echo "  make fast-update      - Quick update"
+	@echo "  make update           - Pull and update"
+	@echo "  make backup           - Backup existing"
+	@echo "  make setup-antigen    - Install/update Antigen"
+	@echo "  make init-devcontainer - Initialize devcontainer in current directory"
+	@echo "  make clean            - Remove broken links"

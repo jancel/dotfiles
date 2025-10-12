@@ -100,6 +100,17 @@
         "focus": true
       },
       "problemMatcher": []
+    },
+    {
+      "label": "$(container) Initialize Dev Container",
+      "type": "shell",
+      "command": "${userHome}/.dotfiles/scripts/init-devcontainer.sh",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "problemMatcher": []
     }
   ]
 }

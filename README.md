@@ -31,6 +31,7 @@ make install
 - `make update` - Pull from git and update
 - `make backup` - Backup existing configs
 - `make setup-antigen` - Install/update Antigen only
+- `make init-devcontainer` - Initialize devcontainer in current directory
 - `make clean` - Remove broken symlinks
 
 ## What Gets Installed
@@ -53,3 +54,37 @@ The setup automatically installs Antigen and configures Oh My Zsh with these plu
 - Vim configuration (`.vimrc`)
 - Tmux configuration (`.tmux.conf`)
 - VSCode settings (if VSCode is installed)
+
+## Dev Containers
+
+A reusable Debian-based devcontainer configuration is included that can be quickly initialized in any project.
+
+### Features
+- Base Debian (bookworm-slim) image
+- Zsh with Oh My Zsh pre-configured
+- Common development tools (git, build-essential, curl, wget, etc.)
+- Non-root user (vscode) with sudo access
+- Automatic dotfiles integration via postCreateCommand
+
+### Usage
+
+Initialize a devcontainer in any project directory:
+
+**Option 1: Using Make**
+```bash
+cd /path/to/your/project
+make -C ~/.dotfiles init-devcontainer
+```
+
+**Option 2: Using the script directly**
+```bash
+cd /path/to/your/project
+~/.dotfiles/scripts/init-devcontainer.sh
+```
+
+**Option 3: Using VS Code Task**
+1. Open Command Palette (Cmd+Shift+P / Ctrl+Shift+P)
+2. Select "Tasks: Run Task"
+3. Choose "Initialize Dev Container"
+
+After initialization, customize `.devcontainer/devcontainer.json` and `.devcontainer/Dockerfile` as needed, then reopen the project in the container via the Command Palette: "Dev Containers: Reopen in Container"
