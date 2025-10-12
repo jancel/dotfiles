@@ -33,11 +33,13 @@ echo -e "${GREEN}Creating devcontainer configuration...${NC}"
 cp "$DEVCONTAINER_TEMPLATE/devcontainer.json" .devcontainer/
 cp "$DEVCONTAINER_TEMPLATE/Dockerfile" .devcontainer/
 
-echo -e "${GREEN}✓ Devcontainer created successfully!${NC}"
+echo -e "${GREEN}✓ Devcontainer created successfully in $(pwd)/.devcontainer${NC}"
 echo ""
 echo "Next steps:"
-echo "  1. Customize .devcontainer/devcontainer.json and .devcontainer/Dockerfile as needed"
-echo "  2. Open the command palette (Cmd+Shift+P)"
+echo "  1. (Optional) Customize .devcontainer/devcontainer.json and .devcontainer/Dockerfile"
+echo "  2. Open the command palette (Cmd+Shift+P / Ctrl+Shift+P)"
 echo "  3. Select 'Dev Containers: Reopen in Container'"
 echo ""
-echo "The container will automatically run install.sh if it exists in your project root."
+echo -e "${GREEN}Your dotfiles will be automatically cloned and installed from GitHub!${NC}"
+echo "  Repository: https://github.com/jancel/dotfiles.git"
+echo "  Branch: main"

@@ -57,3 +57,7 @@ ENV DEBIAN_FRONTEND=dialog
 # Set default user
 USER $USERNAME
 WORKDIR /home/$USERNAME
+
+# Note: Dotfiles are automatically installed by VS Code's built-in dotfiles support
+# See devcontainer.json's "dotfiles" configuration
+# The dotfiles will be cloned to ~/.dotfiles and install.sh will be executed

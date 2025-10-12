@@ -57,14 +57,16 @@ The setup automatically installs Antigen and configures Oh My Zsh with these plu
 
 ## Dev Containers
 
-A reusable Debian-based devcontainer configuration is included that can be quickly initialized in any project.
+A fully automated, reusable Debian-based devcontainer configuration that automatically installs your dotfiles using VS Code's built-in dotfiles support.
 
 ### Features
 - Base Debian (bookworm-slim) image
 - Zsh with Oh My Zsh pre-configured
 - Common development tools (git, build-essential, curl, wget, etc.)
 - Non-root user (vscode) with sudo access
-- Automatic dotfiles integration via postCreateCommand
+- **Automatic dotfiles installation** - Uses VS Code's native dotfiles feature
+- **Smart repository detection** - Uses `DOTFILES_REPO` environment variable if set, otherwise defaults to `https://github.com/jancel/dotfiles.git`
+- **Auto-updates on rebuild** - Refreshes dotfiles when container is recreated
 
 ### Usage
 
@@ -87,4 +89,22 @@ cd /path/to/your/project
 2. Select "Tasks: Run Task"
 3. Choose "Initialize Dev Container"
 
-After initialization, customize `.devcontainer/devcontainer.json` and `.devcontainer/Dockerfile` as needed, then reopen the project in the container via the Command Palette: "Dev Containers: Reopen in Container"
+After initialization:
+1. (Optional) Customize `.devcontainer/devcontainer.json` and `.devcontainer/Dockerfile`
+2. Open Command Palette (Cmd+Shift+P / Ctrl+Shift+P)
+3. Select "Dev Containers: Reopen in Container"
+
+Your dotfiles will be **automatically cloned and installed** using VS Code's built-in dotfiles support!
+
+### Customizing the Dotfiles Repository
+
+The devcontainer uses VS Code's native dotfiles feature, which automatically detects:
+
+1. **Environment variable**: If `DOTFILES_REPO` is set in your environment, it will use that
+2. **VS Code settings**: Configure in VS Code settings: `dotfiles.repository`
+3. **Default fallback**: Uses `https://github.com/jancel/dotfiles.git` if nothing else is configured
+
+To use your own fork, set the environment variable:
+```bash
+export DOTFILES_REPO=https://github.com/yourusername/dotfiles.git
+```

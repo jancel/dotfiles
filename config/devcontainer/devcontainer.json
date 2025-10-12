@@ -36,8 +36,11 @@
     }
   },
 
-  // Use 'postCreateCommand' to run commands after the container is created
-  "postCreateCommand": "if [ -f install.sh ]; then chmod +x install.sh && ./install.sh; fi",
+  // Automatically install dotfiles after container creation
+  // Uses DOTFILES_REPO env var if set, otherwise defaults to jancel/dotfiles
+  // Note: VS Code has built-in dotfiles support via user settings (dotfiles.repository)
+  // This postCreateCommand ensures dotfiles are installed even if that's not configured
+  "postCreateCommand": "bash -c 'REPO=${localEnv:DOTFILES_REPO:https://github.com/jancel/dotfiles.git}; if [ ! -d ~/.dotfiles ]; then git clone $REPO ~/.dotfiles && cd ~/.dotfiles && chmod +x install.sh && ./install.sh; else cd ~/.dotfiles && git pull && make fast-update; fi'",
 
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root
   "remoteUser": "vscode"
