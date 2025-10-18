@@ -1,6 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 # Secure logging system for dotfiles
 # Respects DOTFILES_LOG_LEVEL environment variable
+# Compatible with both bash and zsh
 
 # Log levels
 readonly LOG_LEVEL_NONE=0
@@ -94,10 +95,7 @@ dotfiles_mask_sensitive() {
     fi
 }
 
-# Export functions for use in other scripts
-export -f dotfiles_log_error
-export -f dotfiles_log_warn
-export -f dotfiles_log_info
-export -f dotfiles_log_debug
-export -f dotfiles_secure_source
-export -f dotfiles_mask_sensitive
+# Functions are now available in the current shell
+# Note: In zsh, functions are automatically available to the current shell
+# and subshells when sourced. The 'export -f' syntax is bash-specific
+# and not needed here.

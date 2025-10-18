@@ -35,5 +35,5 @@ fi
 [ -f ~/.bashrc.local ] && source ~/.bashrc.local
 
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/jancel/.rd/bin:$PATH"
+export PATH="/Users/jeff/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
