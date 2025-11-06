@@ -47,13 +47,13 @@
   "git.enableSmartCommit": true,
   // Language Specific Settings
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": null
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": null
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": null
   },
   "[python]": {
     "editor.formatOnSave": true,
@@ -80,5 +80,10 @@
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "workbench.colorTheme": "Default High Contrast",
-  "git.openRepositoryInParentFolders": "always"
+  "git.openRepositoryInParentFolders": "always",
+  "chat.tools.terminal.autoApprove": {
+    "kubectl": true,
+    "prometheus": true,
+    "kube-state\"": true
+  }
 }
