@@ -52,9 +52,9 @@ if [[ -d "$VSCODE_CONFIG_DIR" ]]; then
         cp "${VSCODE_CONFIG_DIR}/tasks.json" "$BACKUP_DIR/"
 fi
 
-# Setup Antigen
-echo "Setting up Antigen..."
-"${DOTFILES_DIR}/scripts/setup-antigen.sh"
+# Setup Oh My Zsh
+echo "Setting up Oh My Zsh..."
+"${DOTFILES_DIR}/scripts/setup-omz.sh"
 
 # Create symlinks
 ln -sf "${DOTFILES_DIR}/config/shell/.bashrc" "${HOME}/.bashrc"

@@ -1,4 +1,4 @@
-.PHONY: all install fast-update backup symlinks clean update help init-devcontainer verify-security init-local setup-github
+.PHONY: all install fast-update backup symlinks clean update help init-devcontainer verify-security init-local setup-github setup-omz
 
 DOTFILES_DIR := $(HOME)/.dotfiles
 BACKUP_DIR := $(HOME)/.dotfiles_backup_$(shell date +%Y%m%d_%H%M%S)
@@ -24,7 +24,7 @@ endif
 
 all: install
 
-install: backup setup-antigen symlinks
+install: backup setup-omz symlinks
 	@echo "✓ Installation complete"
 
 fast-update: symlinks
@@ -43,9 +43,9 @@ backup:
 	fi || true
 	@echo "✓ Backup complete"
 
-setup-antigen:
-	@echo "Setting up Antigen..."
-	@$(DOTFILES_DIR)/scripts/setup-antigen.sh
+setup-omz:
+	@echo "Setting up Oh My Zsh..."
+	@$(DOTFILES_DIR)/scripts/setup-omz.sh
 
 symlinks:
 	@ln -sf $(DOTFILES_DIR)/config/shell/.bashrc $(HOME)/.bashrc
@@ -88,7 +88,7 @@ help:
 	@echo "  make fast-update       - Quick update"
 	@echo "  make update            - Pull and update"
 	@echo "  make backup            - Backup existing"
-	@echo "  make setup-antigen     - Install/update Antigen"
+	@echo "  make setup-omz         - Install/update Oh My Zsh and plugins"
 	@echo "  make init-devcontainer - Initialize devcontainer in current directory"
 	@echo "  make init-local        - Initialize local private configuration"
 	@echo "  make setup-github      - Interactive GitHub configuration setup"

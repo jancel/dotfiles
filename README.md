@@ -62,7 +62,7 @@ See [os/windows/README.md](os/windows/README.md) for detailed Windows/WSL docume
 
 - **Cross-platform support**: macOS, Linux, and Windows (via WSL)
 - **Automatic OS detection**: Installs appropriate packages and configurations for your system
-- **Antigen & Oh My Zsh**: Automatic installation and setup
+- **Oh My Zsh**: Automatic installation and setup
 - **Zsh plugins**: git, docker, kubectl, syntax-highlighting, autosuggestions, and more
 - **Automatic backups**: Before installation
 - **Easy symlink management**: Consistent configuration across all platforms
@@ -74,24 +74,26 @@ See [os/windows/README.md](os/windows/README.md) for detailed Windows/WSL docume
 - `make fast-update` - Quick update (no backup)
 - `make update` - Pull from git and update
 - `make backup` - Backup existing configs
-- `make setup-antigen` - Install/update Antigen only
+- `make setup-omz` - Install/update Oh My Zsh and plugins only
 - `make init-devcontainer` - Initialize devcontainer in current directory
 - `make clean` - Remove broken symlinks
 
 ## What Gets Installed
 
 ### Shell Configuration
-- `.zshrc` with Antigen and Oh My Zsh
+- `.zshrc` with Oh My Zsh
 - `.bashrc` for bash users
 - `.aliases` with common shortcuts
 
-### Antigen & Oh My Zsh
-The setup automatically installs Antigen and configures Oh My Zsh with these plugins:
+### Oh My Zsh
+The setup automatically installs Oh My Zsh with these plugins:
 - git, docker, kubectl, npm, node
 - command-not-found, z
 - zsh-syntax-highlighting
 - zsh-autosuggestions
 - zsh-completions
+
+Theme: `robbyrussell`. External plugins (`zsh-syntax-highlighting`, `zsh-autosuggestions`, `zsh-completions`) live in `~/.oh-my-zsh/custom/plugins/` and are managed by `scripts/setup-omz.sh`.
 
 ### Other Configs
 - Git configuration (`.gitconfig`)

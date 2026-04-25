@@ -1,0 +1,13 @@
+#autoload
+# Fetch a random dad joke from icanhazdadjoke.com and pipe it through cowsay.
+emulate -L zsh
+local joke
+joke=$(curl -fsSL --max-time 3 -H 'Accept: text/plain' \
+    -A 'jancel-dotfiles dadjoke (https://github.com/jancel)' \
+    https://icanhazdadjoke.com/ 2>/dev/null) || return 0
+[[ -z $joke ]] && return 0
+if (( $+commands[cowsay] )); then
+    cowsay -- "$joke"
+else
+    print -- "$joke"
+fi
